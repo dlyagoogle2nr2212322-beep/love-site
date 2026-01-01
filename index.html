@@ -8,13 +8,12 @@
 <style>
     body {
         margin: 0;
-        padding: 0;
         height: 100vh;
         background: linear-gradient(180deg, #ffd6e8, #fff0f6);
         font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', sans-serif;
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         text-align: center;
         overflow: hidden;
     }
@@ -25,115 +24,23 @@
         color: #ff4f9a;
         font-size: 22px;
         line-height: 1.4;
-        animation: fadeIn 0.5s ease;
+        animation: fadeIn 0.4s ease;
     }
 
-    .hello-kitty {
-        font-size: 50px;
-        margin-bottom: 10px;
+    .kitty {
+        font-size: 48px;
+        margin-bottom: 15px;
     }
 
     .buttons {
         margin-top: 30px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        gap: 10px;
     }
 
-    .btn-yes {
-        background: #ff69b4;
-        color: white;
-        border: none;
-        border-radius: 20px;
-        width: 48%;
+    .yes {
+        width: 50%;
         height: 60px;
         font-size: 22px;
-        box-shadow: 0 5px 15px rgba(255,105,180,0.4);
-    }
-
-    .btn-no {
-        background: #ffc0da;
-        color: #ff4f9a;
-        border: none;
-        border-radius: 20px;
-        width: 20%;
-        height: 40px;
-        font-size: 14px;
-        align-self: flex-end;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
-    }
-</style>
-</head>
-
-<body>
-
-<div class="container" id="content">
-    <div class="hello-kitty">🎀🐱</div>
-    Привет моё солнышко
-</div>
-
-<script>
-const messages = [
-    "Привет моё солнышко",
-    "Я хочу устроить тебе то самое чудо, которое мы ждем",
-    "02.01.2026 Я приглашаю тебя отправиться со мной в самое лучшее место для романтического свидания",
-    "Ты согласна?",
-    "Здорово!!! Я обещаю этот вечер будет незабываемый Полиночка",
-    "Я заеду за тобой в 17:50, твоя задача быть самой красивой и в лучшем настроении, ты с этими ролями справляешься прекрасно)))",
-    "Люблю тебя и жду встречи 💖"
-];
-
-let step = 0;
-const content = document.getElementById("content");
-
-document.body.addEventListener("click", () => {
-    if (step === 3) return;
-
-    step++;
-
-    if (step === 3) {
-        content.innerHTML = `
-            <div class="hello-kitty">💗🐱</div>
-            ${messages[3]}
-            <div class="buttons">
-                <button class="btn-yes" onclick="yes()">Да</button>
-                <button class="btn-no" onclick="no()">Нет</button>
-            </div>
-        `;
-        return;
-    }
-
-    if (step < messages.length) {
-        content.innerHTML = `<div class="hello-kitty">🎀</div>${messages[step]}`;
-    }
-
-    if (step === messages.length - 1) {
-        setTimeout(() => {
-            content.innerHTML = `
-                <div class="hello-kitty">💞</div>
-                ${messages[6]}
-                <br><br>
-                <small>Сайт закроется сам…</small>
-            `;
-            setTimeout(() => window.close(), 2500);
-        }, 300);
-    }
-});
-
-function yes() {
-    step = 3;
-    content.innerHTML = `<div class="hello-kitty">🎀</div>${messages[4]}`;
-}
-
-function no() {
-    step = 0;
-    content.innerHTML = `<div class="hello-kitty">🎀🐱</div>${messages[0]}`;
-}
-</script>
-
-</body>
-</html>
+        b
