@@ -43,4 +43,96 @@
         width: 50%;
         height: 60px;
         font-size: 22px;
-        b
+        background: #ff69b4;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(255,105,180,0.4);
+    }
+
+    .no {
+        width: 20%;
+        height: 40px;
+        font-size: 14px;
+        background: #ffd1e8;
+        color: #ff4f9a;
+        border: none;
+        border-radius: 20px;
+        align-self: flex-end;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container" id="content">
+    <div class="kitty">🎀🐱</div>
+    Привет моё солнышко
+</div>
+
+<script>
+const messages = [
+    "Привет моё солнышко",
+    "Я хочу устроить тебе то самое чудо, которое мы ждем",
+    "02.01.2026 Я приглашаю тебя отправиться со мной в самое лучшее место для романтического свидания",
+    "Ты согласна?",
+    "Здорово!!! Я обещаю этот вечер будет незабываемый Полиночка",
+    "Я заеду за тобой в 17:50, твоя задача быть самой красивой и в лучшем настроении, ты с этими ролями справляешься прекрасно)))",
+    "Люблю тебя и жду встречи 💖"
+];
+
+let step = 0;
+const content = document.getElementById("content");
+
+document.body.addEventListener("click", () => {
+    // Пока выбор "Да / Нет" — клики по экрану не работают
+    if (step === 3) return;
+
+    step++;
+
+    // ШАГ 4 — вопрос + кнопки
+    if (step === 3) {
+        content.innerHTML = `
+            <div class="kitty">💗🐱</div>
+            ${messages[3]}
+            <div class="buttons">
+                <button class="yes" onclick="yes()">Да</button>
+                <button class="no" onclick="no()">Нет</button>
+            </div>
+        `;
+        return;
+    }
+
+    // Обычные сообщения (1,2,5,6,7)
+    if (step < messages.length) {
+        content.innerHTML = `<div class="kitty">🎀</div>${messages[step]}`;
+    }
+
+    // ШАГ 7 — попытка закрыть сайт
+    if (step === messages.length - 1) {
+        setTimeout(() => {
+            window.close();
+        }, 2500);
+    }
+});
+
+// Нажала "Да"
+function yes() {
+    step = 4;
+    content.innerHTML = `<div class="kitty">💞</div>${messages[4]}`;
+}
+
+// Нажала "Нет" — возврат в начало
+function no() {
+    step = 0;
+    content.innerHTML = `<div class="kitty">🎀🐱</div>${messages[0]}`;
+}
+</script>
+
+</body>
+</html>
